@@ -1,12 +1,18 @@
 import { useState } from "react";
 import "./App.css";
-import Movies from "./Components/Movie";
+import Movie from "./Components/Movie";
 // import MovieList from "./Components/MovieList";
 import MovieForm from "./Components/MovieForm";
 
 function App() {
-  const [someText, setSomeText] = useState("");
-  const getFormData = (text) => setSomeText(text);
+  // const [movieTitle, setMovieTitle] = useState("");
+  const [movieList, setMovieList] = useState([]);
+
+  const getFormData = (title) => {
+    // setMovieTitle(title);
+    const newMovieList = [title, ...movieList];
+    setMovieList(newMovieList);
+  };
 
   // function MovieForms() {
   // const [movieListItems, setMovieListItems] = useState({});
@@ -19,7 +25,10 @@ function App() {
       <h1>Form Demo</h1>
       {/* <MovieList generateList={generateList} /> */}
       <MovieForm action={getFormData} />
-      <Movies />
+      {!!movieList.length &&
+        movieList.map((movie, index) => {
+          return <Movie key={`${movie}-${index}`} title={movie} />;
+        })}
     </>
   );
 }

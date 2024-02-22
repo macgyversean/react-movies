@@ -1,26 +1,23 @@
 import { useState } from "react";
 
-const MovieForm = ({ generateList }) => {
+const MovieForm = ({ action }) => {
   // Start with a state object that holds our blank items
-  const [movieItems, setMovieItems] = useState({});
+  const [movieItems, setMovieItems] = useState("");
 
   const handleSubmit = (e) => {
     // We shouldn't need to prevent default...
     // ...but we're going to, just in case
     e.preventDefault();
-    generateList(movieItems);
+    action(movieItems);
   };
 
   // This will control our inputs and save values into state
   const handleChange = (e) => {
     // Destructure the values we want from the input
-    const { name, value } = e.target;
+    const { value } = e.target;
     // Update the state object with the changes using: [name]:value
     // This syntax will dynamically update the key that matches the 'name' with new 'value'
-    setMovieItems((currentItems) => ({
-      ...currentItems,
-      [name]: value,
-    }));
+    setMovieItems(value);
   };
 
   return (
@@ -31,7 +28,7 @@ const MovieForm = ({ generateList }) => {
           type="text"
           name="item1"
           onChange={handleChange}
-          value={movieItems.item1}
+          value={movieItems}
         />
       </label>
       <button type="submit">Submit</button>

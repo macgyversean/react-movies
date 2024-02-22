@@ -1,0 +1,9 @@
+.root {
+  border: solid 2px violet;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 0 300px;
+  max-width: 320px;
+  margin: 8px;
+  padding: 8px;
+}
