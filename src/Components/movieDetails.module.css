@@ -1,9 +1,14 @@
 .root {
-  border: solid 2px violet;
+  border: solid 5px rgb(47, 7, 47);
   display: flex;
   flex-wrap: wrap;
-  flex: 1 0 300px;
+  justify-content: flex-start;
+  flex: 0 0 200px;
   max-width: 320px;
   margin: 8px;
   padding: 8px;
+  border-image-width: 20%;
+}
+.movie.Poster {
+  width: 100%;
 }
