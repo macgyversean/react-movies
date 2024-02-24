@@ -5,7 +5,6 @@ import MovieForm from "./Components/MovieForm";
 
 function App() {
   const [movieList, setMovieList] = useState([]);
-  console.log({ movieList });
 
   return (
     <>
@@ -14,6 +13,7 @@ function App() {
       <MovieForm movieList={movieList} setMovieList={setMovieList} />
       {!!movieList.length &&
         movieList.map((movie, index) => {
+          console.log(movie);
           return <MovieCard key={`${movie}-${index}`} movie={movie} />;
         })}
     </>

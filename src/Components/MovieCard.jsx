@@ -9,6 +9,7 @@ function MovieCard({ movie }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setReview("");
     localStorage.setItem(movie.Title, review);
   };
   return (
