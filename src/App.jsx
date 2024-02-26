@@ -14,7 +14,7 @@ function App() {
       {!!movieList.length &&
         movieList.map((movie, index) => {
           console.log(movie);
-          return <MovieCard key={`${movie}-${index}`} movie={movie} />;
+          return <MovieCard key={`${movie.Title}-${index}`} movie={movie} />;
         })}
     </>
   );

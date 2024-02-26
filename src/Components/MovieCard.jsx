@@ -1,17 +1,19 @@
 import RatingDetail from "./Ratings";
 import styles from "./movieDetails.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // We shouldn't need to prevent default...
 // ...but we're going to, just in case
 
 function MovieCard({ movie }) {
-  const [review, setReview] = useState(localStorage.getItem(movie.Title));
-
+  const [userInput, setUserInput] = useState("");
+  const [review, setReview] = useState(0);
+  // const [review, setReview] = useState(localStorage.getItem(movie.Title));
   const handleSubmit = (e) => {
     e.preventDefault();
-    setReview("");
-    localStorage.setItem(movie.Title, review);
+    setReview(userInput);
+    setUserInput("");
   };
+  const handleChange = (e) => setUserInput(e.target.value);
   return (
     <div className={styles.root}>
       <>
@@ -36,9 +38,10 @@ function MovieCard({ movie }) {
               <label>
                 Please put in a review for the movie:
                 <input
+                  value={userInput}
                   type="text"
                   name="item1"
-                  onChange={(e) => setReview(e.target.value)}
+                  onChange={handleChange}
                 />
               </label>
               <button type="submit">Submit</button>
